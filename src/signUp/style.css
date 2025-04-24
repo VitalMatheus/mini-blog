@@ -1,0 +1,84 @@
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.sign-up-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 500px;
+  height: 205px;
+  background-color: #FFFFFF;
+  border-radius: 16px;
+}
+
+.sign-up-form h1 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 22px;
+  align-self: flex-start;
+  padding-left: 22px;
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #000000;
+}
+
+.sign-up-form p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #000000;
+}
+
+.sign-up-form div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.sign-up-form label {
+  display: flex;
+  flex-direction: column;
+}
+
+.sign-up-form input {
+  width: 452px;
+  height: 32px;
+  margin-bottom: 10px;
+  border: 1px solid #777777;
+  border-radius: 8px;
+  padding: 0 8px;
+  margin-top: 8px;
+}
+
+.button {
+  width: 111px;
+  height: 32px;
+  background-color: #7695EC;
+  border: 0px;
+  border-radius: 8px;
+  color: #FFFFFF;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: 0%;
+  align-self: flex-end;
+  margin-right: 24px;
+  cursor: not-allowed;
+}
+
+.enabled {
+  background-color: #2d2dec;
+  cursor: pointer;
+}
