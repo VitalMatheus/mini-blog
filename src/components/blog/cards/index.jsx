@@ -1,26 +1,6 @@
-import React, { useState, useEffect } from 'react';
 import './style.css';
 
-function Cards() {
-  const [posts, setPosts] = useState([]);
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const response = await fetch('https://dev.codeleap.co.uk/careers/');
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        setPosts(data.results);
-      } catch (error) {
-        console.error('Error fetching posts:', error);
-      }
-    };
-
-    fetchPosts();
-  }, []);
-
+function Cards({ posts }) {
   function timeAgo(dateString) {
     const now = new Date();
     const past = new Date(dateString);
