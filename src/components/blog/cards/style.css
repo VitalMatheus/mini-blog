@@ -4,7 +4,6 @@
   align-items: center;
   background-color: #FFFFFF;
   width: 100%;
-  padding: 24px;
 }
 
 .card {
@@ -14,6 +13,7 @@
   height: 354px;
   border: 1px solid #777777;
   border-radius: 16px;
+  margin-bottom: 24px;
 }
 
 .card-header {
