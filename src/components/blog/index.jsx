@@ -1,4 +1,5 @@
 import Form from './form/index.jsx';
+import Cards from './cards/index.jsx';
 import './style.css';
 
 const Blog = () => {
@@ -8,7 +9,7 @@ const Blog = () => {
         <h1>CodeLeap Network</h1>
       </div>
       <Form />
-      {/* <Cards /> */}
+      <Cards />
     </div>
   );
 }
