@@ -30,13 +30,13 @@
   line-height: 100%;
   letter-spacing: 0%;
   color: #000000;
+  margin-bottom: 16px;
 }
 
 .modal-buttons {
   display: flex;
   justify-content: flex-end;
   gap: 16px;
-  margin-top: 16px;
 }
 
 .cancel-button,

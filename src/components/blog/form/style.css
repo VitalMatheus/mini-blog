@@ -3,8 +3,12 @@
   flex-direction: column;
   align-items: center;
   background-color: #FFFFFF;
-  width: 100%;
+  width: 800px;
   padding: 24px;
+}
+
+.form-container-header {
+  width: 752px;
 }
 
 .form-content {
@@ -12,7 +16,6 @@
   flex-direction: column;
   padding: 24px;
   justify-content: space-between;
-  width: 752px;
   height: 354px;
   border: 1px solid #777777;
   border-radius: 16px;
@@ -40,7 +43,6 @@
 }
 
 .form-inputs input {
-  width: 704px;
   height: 32px;
   border: 1px solid #777777;
   border-radius: 8px;
@@ -48,7 +50,6 @@
 }
 
 .form-inputs textarea {
-  width: 704px;
   height: 74px;
   border: 1px solid #777777;
   border-radius: 8px;
@@ -73,4 +74,36 @@
 .enabled {
   background-color: #2d2dec;
   cursor: pointer;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cancel-button,
+.save-button {
+  width: 120px;
+  height: 32px;
+  border: 1px solid #999999;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: 'Roboto', sans-serif;
+}
+
+.cancel-button {
+  background-color: #FFFFFF;
+  color: #000000;
+}
+
+.save-button {
+  background-color: #47B960;
+  color: white;
+}
+
+.save-button.enabled {
+  background-color: #08721f;
 }

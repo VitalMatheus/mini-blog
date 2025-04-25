@@ -1,7 +1,7 @@
 import './style.css'
 
 const DeleteModal = ({ postId, setPosts, setShowDeleteModal }) => {
-  const handleDelete = async (postId) => {
+  const handleDelete = async () => {
     try {
       const response = await fetch(`https://dev.codeleap.co.uk/careers/${postId}/`, {
         method: 'DELETE',
@@ -31,7 +31,7 @@ const DeleteModal = ({ postId, setPosts, setShowDeleteModal }) => {
         <p>Are you sure you want to delete this item?</p>
         <div className="modal-buttons">
           <button className="cancel-button" onClick={() => handleCancel()}>Cancel</button>
-          <button className="delete-button" onClick={() => handleDelete(postId)}>Delete</button>
+          <button className="delete-button" onClick={() => handleDelete()}>Delete</button>
         </div>
       </div>
     </div>

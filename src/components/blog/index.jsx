@@ -28,7 +28,11 @@ const Blog = ({ userName }) => {
       <div className='blog-header'>
         <h1>CodeLeap Network</h1>
       </div>
-      <Form userName={userName} setPosts={setPosts} />
+      <div className="form-container">
+        <div className="form-container-header">
+          <Form userName={userName} setPosts={setPosts} />
+        </div>
+      </div>
       <Cards userName={userName} posts={posts} setPosts={setPosts} />
     </div>
   );
