@@ -33,6 +33,19 @@
   gap: 16px;
 }
 
+.icon-buttons {
+  background: none;
+  border: 0px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.icon-buttons svg {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+
 .card-header h1 {
   color: #fff;
   font-family: 'Roboto', sans-serif;
