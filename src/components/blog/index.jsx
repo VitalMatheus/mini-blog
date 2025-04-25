@@ -29,7 +29,7 @@ const Blog = ({ userName }) => {
         <h1>CodeLeap Network</h1>
       </div>
       <Form userName={userName} setPosts={setPosts} />
-      <Cards userName={userName} posts={posts} />
+      <Cards userName={userName} posts={posts} setPosts={setPosts} />
     </div>
   );
 }
