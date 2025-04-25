@@ -21,12 +21,16 @@ const DeleteModal = ({ postId, setPosts, setShowDeleteModal }) => {
     }
   };
 
+  const handleCancel = () => {
+    setShowDeleteModal(false);
+  }
+
   return (
     <div className="modal-backdrop">
       <div className="modal">
         <p>Are you sure you want to delete this item?</p>
         <div className="modal-buttons">
-          <button className="cancel-button">Cancel</button>
+          <button className="cancel-button" onClick={() => handleCancel()}>Cancel</button>
           <button className="delete-button" onClick={() => handleDelete(postId)}>Delete</button>
         </div>
       </div>
