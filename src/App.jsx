@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import SignUp from '../src/signUp/index.jsx'
-import Blog from '../src/blog/index.jsx'
+import SignUp from './components/signUp/index.jsx'
+import Blog from './components/blog/index.jsx'
 
 function App() {
   const [userName, setUserName] = useState('');

@@ -10,7 +10,7 @@ const SignUp = ({ userName, setUserName, setIsSignedUp }) => {
             <p>Please enter your username</p>
             <input onChange={(e) => setUserName(e.target.value)} type="text" value={userName} name="username" placeholder="John Doe" />
           </label>
-          <button onClick={() => setIsSignedUp(true)} className={`button ${userName != '' && 'enabled'}`} disabled={userName === ''}>Enter</button>
+          <button onClick={() => setIsSignedUp(true)} className={`button ${userName !== '' && 'enabled'}`} disabled={userName === ''}>Enter</button>
         </div>
       </form >
     </div >
