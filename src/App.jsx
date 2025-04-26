@@ -1,20 +1,16 @@
-import React, { useState } from 'react';
-import SignUp from './components/signUp/index.jsx';
-import Blog from './components/blog/index.jsx';
+import React from 'react'
+import { useSelector } from 'react-redux'
+import SignUp from './components/signUp/index.jsx'
+import Blog from './components/blog/index.jsx'
 
 function App() {
-  const [userName, setUserName] = useState('');
-  const [isSignedUp, setIsSignedUp] = useState(false);
+  const isSignedUp = useSelector(state => state.signup.isSignedUp)
 
   return (
     <>
-      {
-        isSignedUp ? (
-          <Blog userName={userName} />
-        ) : (
-          <SignUp userName={userName} setUserName={setUserName} setIsSignedUp={setIsSignedUp} />
-        )
-      }
+      {isSignedUp
+        ? <Blog />
+        : <SignUp />}
     </>
   )
 }
