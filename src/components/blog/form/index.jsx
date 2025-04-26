@@ -1,22 +1,33 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
+import { addPost, editPost, stopEditing } from '../../../redux/postsSlice';
 import './style.css';
 
-const Form = ({ post, userName, setPosts, isEditing, setIsEditing }) => {
+const Form = () => {
+  const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const username = useSelector(state => state.signup.username)
+  const isEditing = useSelector(state => state.posts.isEditing)
+  const selectedPostId = useSelector(state => state.posts.selectedPostId)
+  const post = useSelector(state => state.posts.value.find(post => post.id === selectedPostId));
+  const postID = useSelector(state => state.posts.selectedPostId)
 
   useEffect(() => {
     if (isEditing && post) {
       setTitle(post.title);
       setContent(post.content);
+    } else {
+      setTitle('');
+      setContent('');
     }
   }, [isEditing, post]);
 
-  const handleSubmit = async (e) => {
+  const handleCreate = async (e) => {
     e.preventDefault();
 
     const data = {
-      username: userName,
+      username,
       title,
       content,
     };
@@ -35,7 +46,7 @@ const Form = ({ post, userName, setPosts, isEditing, setIsEditing }) => {
       }
 
       const result = await response.json();
-      setPosts((posts) => [result, ...posts])
+      dispatch(addPost(result))
       setTitle("");
       setContent("");
     } catch (error) {
@@ -43,21 +54,17 @@ const Form = ({ post, userName, setPosts, isEditing, setIsEditing }) => {
     }
   }
 
-  const handleCancel = () => {
-    setIsEditing(false);
-  }
-
   const handleEdit = async (e) => {
     e.preventDefault();
 
     const data = {
-      username: userName,
+      username,
       title,
       content,
     };
 
     try {
-      const response = await fetch(`https://dev.codeleap.co.uk/careers/${post.id}/`, {
+      const response = await fetch(`https://dev.codeleap.co.uk/careers/${postID}/`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -70,15 +77,15 @@ const Form = ({ post, userName, setPosts, isEditing, setIsEditing }) => {
       }
 
       const result = await response.json();
-      setPosts((prevPosts) => prevPosts.map((prevPost) => (prevPost.id === post.id ? result : prevPost)));
+      dispatch(editPost(result));
     } catch (error) {
       console.error('Error editing post:', error);
     }
-    setIsEditing(false);
+    dispatch(stopEditing(false));
   }
 
   return (
-    <form className='form-content' onSubmit={(e) => isEditing ? handleEdit(e) : handleSubmit(e)}>
+    <form className='form-content' onSubmit={(e) => isEditing ? handleEdit(e) : handleCreate(e)}>
       {isEditing ? <h1>Edit Item</h1> : <h1>What's on your mind?</h1>}
 
       <div className='form-inputs'>
@@ -93,7 +100,7 @@ const Form = ({ post, userName, setPosts, isEditing, setIsEditing }) => {
 
       {isEditing ? (
         <div className='modal-buttons'>
-          <button type='button' onClick={() => handleCancel()} className='cancel-button'>Cancel</button>
+          <button type='button' onClick={() => dispatch(stopEditing())} className='cancel-button'>Cancel</button>
           <button type='submit' onClick={(e) => handleEdit(e)} className={`save-button ${title !== '' && content !== '' && 'enabled'}`} disabled={title === '' || content === ''}>Save</button>
         </div>
       ) : (

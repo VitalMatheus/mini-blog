@@ -1,6 +1,11 @@
+import { useDispatch, useSelector } from 'react-redux'
+import { deletePost } from '../../../redux/postsSlice.js'
 import './style.css'
 
-const DeleteModal = ({ postId, setPosts, setShowDeleteModal }) => {
+const DeleteModal = ({ setShowDeleteModal }) => {
+  const dispatch = useDispatch()
+  const postId = useSelector(state => state.posts.selectedPostId)
+
   const handleDelete = async () => {
     try {
       const response = await fetch(`https://dev.codeleap.co.uk/careers/${postId}/`, {
@@ -14,7 +19,7 @@ const DeleteModal = ({ postId, setPosts, setShowDeleteModal }) => {
         throw new Error('Network response was not ok');
       }
 
-      setPosts((prevPosts) => prevPosts.filter((post) => post.id !== postId));
+      dispatch(deletePost());
       setShowDeleteModal(false);
     } catch (error) {
       console.error('Error deleting post:', error);

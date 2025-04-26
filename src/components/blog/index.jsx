@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import Form from './form/index.jsx';
-import Cards from './cards/index.jsx';
-import './style.css';
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { setPost } from '../../redux/postsSlice.js'
+import Form from './form/index.jsx'
+import Cards from './cards/index.jsx'
+import './style.css'
 
-const Blog = ({ userName }) => {
-  const [posts, setPosts] = useState([]);
+const Blog = () => {
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -14,14 +16,14 @@ const Blog = ({ userName }) => {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        setPosts(data.results);
+        dispatch(setPost(data.results));
       } catch (error) {
         console.error('Error fetching posts:', error);
       }
     };
 
     fetchPosts();
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="blog-container">
@@ -30,10 +32,10 @@ const Blog = ({ userName }) => {
       </div>
       <div className="form-container">
         <div className="form-container-header">
-          <Form userName={userName} setPosts={setPosts} />
+          <Form />
         </div>
       </div>
-      <Cards userName={userName} posts={posts} setPosts={setPosts} />
+      <Cards />
     </div>
   );
 }
