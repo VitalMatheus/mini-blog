@@ -1,12 +1,45 @@
-# React + Vite
+# 📝 CodeLeap Blog App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple blog application built with **React** and **Redux** where users can sign up with a username, create, edit, and delete posts. Designed for the CodeLeap challenge.
 
-Currently, two official plugins are available:
+## 📦 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- User sign-up with username
+- Redux state management
+- Create new posts
+- Edit and delete existing posts
+- Modal form for editing posts
+- Clean and responsive UI
 
-## Expanding the ESLint configuration
+## 🚀 Technologies Used
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React
+- Redux Toolkit
+- JavaScript (ES6+)
+- HTML5 & CSS3
+
+## 🧠 How It Works
+
+- When the user accesses the app, they are asked to enter a username.
+- After submitting a valid username, they are redirected to the main blog interface.
+- Users can create new posts using a form.
+- Each post can be edited or deleted.
+- Editing opens a modal where the post content can be updated.
+- Redux manages global state for posts and UI modals.
+
+## 🔧 Installation
+
+1. Clone the repository:
+   ```bash
+   git clone git@github.com:VitalMatheus/mini-blog.git
+   cd codeleap-blog-app
+
+2. Install dependencies:
+
+    ```bash
+    npm install
+
+3. Run the development server:
+
+    ```bash
+    npm start
