@@ -9,7 +9,12 @@ export const postsSlice = createSlice({
   },
   reducers: {
     addPost: (state, action) => {
-      state.value.unshift(action.payload);
+      const newPost = {
+        ...action.payload,
+        likes: 0,
+        comments: [],
+      };
+      state.value.unshift(newPost);
     },
     setPost: (state, action) => {
       state.value = action.payload;
@@ -33,10 +38,36 @@ export const postsSlice = createSlice({
     },
     stopEditing: (state) => {
       state.isEditing = false;
-    }
+    },
+    likePost: (state, action) => {
+      const { postId, userId } = action.payload;
+      const post = state.value.find(post => post.id === postId);
+      if (post) {
+        if (!post.likedBy) {
+          post.likedBy = [];
+        }
+        if (post.likedBy.includes(userId)) {
+          post.likes = Math.max(0, (post.likes || 0) - 1);
+          post.likedBy = post.likedBy.filter(id => id !== userId);
+        } else {
+          post.likes = (post.likes || 0) + 1;
+          post.likedBy.push(userId);
+        }
+      }
+    },
+    addComment: (state, action) => {
+      const { id, comment } = action.payload;
+      const post = state.value.find(item => item.id === id);
+      if (post) {
+        if (!post.comments) {
+          post.comments = [];
+        }
+        post.comments.push(comment);
+      }
+    },
   }
 })
 
-export const { addPost, setPost, deletePost, editPost, setSelectedPostId, startEditing, stopEditing } = postsSlice.actions
+export const { addPost, setPost, deletePost, editPost, setSelectedPostId, startEditing, stopEditing, likePost, addComment } = postsSlice.actions
 
 export default postsSlice.reducer

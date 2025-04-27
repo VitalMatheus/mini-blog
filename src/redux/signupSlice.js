@@ -12,10 +12,19 @@ export const signupSlice = createSlice({
     },
     setIsSignedUp: (state, action) => {
       state.isSignedUp = action.payload
-    }
+    },
+    setUser: (state, action) => {
+      state.user = action.payload;
+      state.isSignedUp = true;
+    },
+    logout: (state) => {
+      state.user = null;
+      state.isSignedUp = false;
+      state.username = '';
+    },
   }
 })
 
-export const { setUserName, setIsSignedUp } = signupSlice.actions
+export const { setUserName, setIsSignedUp, setUser, logout } = signupSlice.actions
 
 export default signupSlice.reducer

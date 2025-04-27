@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { setPost } from '../../redux/postsSlice.js'
+import { logout } from '../../redux/signupSlice.js';
 import Form from './form/index.jsx'
 import Cards from './cards/index.jsx'
 import './style.css'
@@ -27,8 +28,12 @@ const Blog = () => {
 
   return (
     <div className="blog-container">
-      <div className='blog-header'>
+      <div className="blog-header">
         <h1>CodeLeap Network</h1>
+
+        <button className="logout-button" onClick={() => dispatch(logout())}>
+          Logout
+        </button>
       </div>
       <div className="form-container">
         <div className="form-container-header">
