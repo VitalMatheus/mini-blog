@@ -72,7 +72,7 @@ function Cards() {
 
           </div>
           <div className="post-actions">
-            <button className="like-button" onClick={() => dispatch(likePost({ postId: post.id, userId: username.id }))}><FaRegHeart /> {post.likes}</button>
+            <button className="like-button" onClick={() => dispatch(likePost({ postId: post.id, username }))}><FaRegHeart /> {post.likedBy?.length}</button>
             <button className="comment-button" onClick={() => setActiveComment(postId => postId === post.id ? null : post.id)} ><FaRegComment /></button>
           </div>
 
