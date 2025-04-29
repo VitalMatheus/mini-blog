@@ -11,8 +11,8 @@ export const postsSlice = createSlice({
     addPost: (state, action) => {
       const newPost = {
         ...action.payload,
-        likes: 0,
         comments: [],
+        likedBy: [],
       };
       state.value.unshift(newPost);
     },
@@ -40,20 +40,18 @@ export const postsSlice = createSlice({
       state.isEditing = false;
     },
     likePost: (state, action) => {
-      const { postId, userId } = action.payload;
+      const { postId, username } = action.payload;
       const post = state.value.find(post => post.id === postId);
-      if (post) {
-        if (!post.likedBy) {
-          post.likedBy = [];
-        }
-        if (post.likedBy.includes(userId)) {
-          post.likes = Math.max(0, (post.likes || 0) - 1);
-          post.likedBy = post.likedBy.filter(id => id !== userId);
-        } else {
-          post.likes = (post.likes || 0) + 1;
-          post.likedBy.push(userId);
-        }
-      }
+
+      if (!post) return;
+
+      post.likedBy = post.likedBy || [];
+
+      const alreadyLiked = post.likedBy.includes(username);
+
+      post.likedBy = alreadyLiked
+        ? post.likedBy.filter(id => id !== username)
+        : [...post.likedBy, username];
     },
     addComment: (state, action) => {
       const { id, comment } = action.payload;
